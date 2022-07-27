@@ -36,7 +36,7 @@ RUN apk add --update --no-cache \
 
 # Install PHP extensions
 # To ensure users are satified, we add more than most people will need
-RUN docker-php-ext-install \
+RUN CFLAGS="$CFLAGS -D_GNU_SOURCE" docker-php-ext-install \
         opcache \
         soap \
         ftp \
@@ -58,7 +58,6 @@ RUN docker-php-ext-install \
         mysqli \
         gd \
         fileinfo \
-        iconv \
         phar \
         simplexml \
         xml \
